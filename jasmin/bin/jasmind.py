@@ -79,16 +79,16 @@ class JasminDaemon:
 
     @defer.inlineCallbacks
     def startRedisClient(self):
-        """Start AMQP Broker"""
+        """Start Redis"""
         RedisForJasminConfigInstance = RedisForJasminConfig(self.options['config'])
         self.components['rc'] = yield ConnectionWithConfiguration(RedisForJasminConfigInstance)
         # Authenticate and select db
         if RedisForJasminConfigInstance.password is not None:
             yield self.components['rc'].auth(RedisForJasminConfigInstance.password)
-            yield self.components['rc'].select(RedisForJasminConfigInstance.dbid)
+            # yield self.components['rc'].select(RedisForJasminConfigInstance.dbid)            
 
     def stopRedisClient(self):
-        """Stop AMQP Broker"""
+        """Stop Redis"""
         return self.components['rc'].disconnect()
 
     def startAMQPBrokerService(self):
