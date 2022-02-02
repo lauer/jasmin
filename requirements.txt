@@ -19,7 +19,7 @@ python-messaging~=0.5.13
 
 # Added in 0.9rc16:
 celery>=4.0.0
-redis~=3.4.1
+redis~=4.1.2
 requests~=2.23.0
 
 # For REST API
